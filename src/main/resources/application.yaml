@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: RentMyCar
+  datasource:
+    url: jdbc:mysql://localhost/rentmycar?createDatabaseIfNotExist=true
+    username: root
+    password: admin123
