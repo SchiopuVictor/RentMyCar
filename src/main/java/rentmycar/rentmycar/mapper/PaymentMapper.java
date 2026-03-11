@@ -1,6 +1,5 @@
 package rentmycar.rentmycar.mapper;
 
-import rentmycar.rentmycar.dtos.PaymentRequest;
 import rentmycar.rentmycar.dtos.PaymentResponse;
 import rentmycar.rentmycar.entity.Payment;
 
@@ -10,6 +9,7 @@ public class PaymentMapper {
         return  PaymentResponse.builder()
                 .paymentMethod(request.getPaymentMethod())
                 .invoiceNumber(request.getInvoice().getInvoiceNumber())
+                .companyName(request.getCompany().getCompanyName())
                 .paidAt(request.getPaidAt())
                 .status(request.getStatus())
                 .amount(request.getAmount())

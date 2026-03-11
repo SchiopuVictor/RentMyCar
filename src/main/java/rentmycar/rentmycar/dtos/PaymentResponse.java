@@ -21,5 +21,6 @@ public class PaymentResponse {
     private String paymentMethod;
     private BigDecimal amount;
     private Long invoiceNumber;
+    private String companyName;
 
 }

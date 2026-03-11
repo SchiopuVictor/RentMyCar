@@ -38,4 +38,25 @@ public ResponseEntity<Void> deletePayment(@PathVariable Long id) {
     paymentService.deletePayment(id);
     return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
 }
+
+    @GetMapping("/{id}/pdf")
+    public ResponseEntity<byte[]> getPdfPayment(@PathVariable Long id)
+    {
+        byte[] pdf = paymentService.getPaymentPdf(id);
+        return  ResponseEntity.ok()
+                .header("Content-Type", "application/pdf")
+                .header("Content-Disposition", "attachment; filename= ticket.pdf")
+                .body(pdf);
+    }
+
+    @GetMapping("/{id}/view")
+    public ResponseEntity<byte[]> viewPdfPayment(@PathVariable Long id)
+    {
+        byte[] pdf = paymentService.getPaymentPdf(id);
+        return ResponseEntity.ok()
+                .header("Content-Type","application/pdf")
+                .header("Content-Disposition","inline;filename = ticket.pdf")
+                .body(pdf);
+    }
+
 }

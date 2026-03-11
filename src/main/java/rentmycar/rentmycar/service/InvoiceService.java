@@ -57,6 +57,4 @@ public class InvoiceService {
         invoiceRepository.delete(invoice);
 
     }
-
-
 }

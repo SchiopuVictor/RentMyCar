@@ -35,6 +35,10 @@ public class Payment {
     @Column(name = "paid_at", nullable = false)
     private LocalDate paidAt;
 
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
+
     public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
         if (invoice.getAmount() != null) {

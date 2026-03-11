@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -18,4 +17,5 @@ public class PaymentRequest {
     private String status;
     private String paymentMethod;
     private Long invoiceId;
+    private Long companyId;
 }

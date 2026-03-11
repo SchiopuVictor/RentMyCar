@@ -7,7 +7,11 @@ create table payments
     payment_method varchar(100)   not null,
     status         varchar(50)    not null,
     paid_at        timestamp      not null,
-    constraint payments_invoices_id_fk
-        foreign key (invoice_id) references invoices (id)
+    company_id  bigint not null,
+        constraint payments_invoices_id_fk
+        foreign key (invoice_id) references invoices (id),
+    constraint payments_payment_id_fk
+        foreign key (company_id) references payments (id)
 );
+
 
