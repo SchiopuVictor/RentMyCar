@@ -1,6 +1,5 @@
 package rentmycar.rentmycar.service;
 
-import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -18,10 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import rentmycar.rentmycar.entity.Payment;
 
-
 import java.io.ByteArrayOutputStream;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Service
 @RequiredArgsConstructor
@@ -35,8 +31,6 @@ public class PaymentPdfService {
         PageSize pageSize = new PageSize(550,600);
         Document document = new Document(pdf,pageSize);
 
-
-
         Paragraph paragraph = new Paragraph();
         paragraph.add("CONTRACT DE INCHIRIERE AUTO");
         paragraph.setTextAlignment(TextAlignment.CENTER);
@@ -44,7 +38,6 @@ public class PaymentPdfService {
         paragraph.setFontColor(new DeviceRgb(27, 90, 106));
         paragraph.setFontSize(18);
         document.add(paragraph);
-
 
         Table header = new Table(2).useAllAvailableWidth();
         header.setBorder(Border.NO_BORDER);
@@ -109,7 +102,6 @@ public class PaymentPdfService {
         leftMidPart.add(new Paragraph("Model: " + payment.getInvoice().getBooking().getCar().getModel()));
         leftMidPart.add(new Paragraph("Brand: "+ payment.getInvoice().getBooking().getCar().getBrand()));
         leftMidPart.add(new Paragraph("Nr.Auto: "+payment.getInvoice().getBooking().getCar().getLicensePlate()));
-
 
         Cell rightMidPart = new Cell();
         rightMidPart.setFontColor(new DeviceRgb(27, 90, 106));

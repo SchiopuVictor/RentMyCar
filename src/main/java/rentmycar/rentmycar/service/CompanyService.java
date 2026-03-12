@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rentmycar.rentmycar.dtos.CompanyRequest;
 import rentmycar.rentmycar.entity.Company;
+import rentmycar.rentmycar.exception.CompanyNotFoundException;
 import rentmycar.rentmycar.mapper.CompanyMapper;
 import rentmycar.rentmycar.repository.CompanyRespositroy;
 
@@ -23,7 +24,7 @@ public Company createCompany(CompanyRequest request){
 @Transactional
 public Company updateCompany(CompanyRequest request,long id){
     Company company = companyRespositroy.findById(id).orElseThrow(
-            ()->new RuntimeException("company not found"));
+            CompanyNotFoundException::new);
     company.setCui(request.getCui());
     company.setCompanyName(request.getCompanyName());
     company.setTell(request.getPhone());
@@ -36,12 +37,14 @@ public Company updateCompany(CompanyRequest request,long id){
 @Transactional
 public void deleteCompany(Long id){
     Company company = companyRespositroy.findById(id).orElseThrow(
-            ()->new RuntimeException("Company not found"));
+            CompanyNotFoundException::new);
     companyRespositroy.delete(company);
 }
 
 public Company getCompany(Long id){
-    return companyRespositroy.findById(id).orElseThrow(()->new RuntimeException("Company not found"));
+    return companyRespositroy
+            .findById(id)
+            .orElseThrow(CompanyNotFoundException::new);
 }
 
 

@@ -7,9 +7,9 @@ import rentmycar.rentmycar.dtos.PaymentRequest;
 import rentmycar.rentmycar.entity.Company;
 import rentmycar.rentmycar.entity.Invoice;
 import rentmycar.rentmycar.entity.Payment;
+import rentmycar.rentmycar.exception.CompanyNotFoundException;
 import rentmycar.rentmycar.exception.InvoiceNotFoundException;
 import rentmycar.rentmycar.exception.PaymentNotFoundException;
-import rentmycar.rentmycar.mapper.PaymentMapper;
 import rentmycar.rentmycar.repository.CompanyRespositroy;
 import rentmycar.rentmycar.repository.InvoiceRepository;
 import rentmycar.rentmycar.repository.PaymentRepository;
@@ -30,7 +30,7 @@ private final CompanyRespositroy companyRespositroy;
         Invoice invoice = invoiceRepository.findById(request.getInvoiceId()).orElseThrow(
                 InvoiceNotFoundException::new);
         Company company = companyRespositroy.findById(request.getCompanyId()).orElseThrow(
-                ()->new RuntimeException("Company not found"));
+                CompanyNotFoundException::new);
 
         Payment payment =new Payment();
         payment.setInvoice(invoice);
@@ -52,7 +52,7 @@ private final CompanyRespositroy companyRespositroy;
                 InvoiceNotFoundException::new);
 
         Company company = companyRespositroy.findById(request.getCompanyId()).orElseThrow(
-                ()->new RuntimeException("Company not found"));
+                CompanyNotFoundException::new);
 
         payment.setPaymentMethod(request.getPaymentMethod());
         payment.setInvoice(invoice);
