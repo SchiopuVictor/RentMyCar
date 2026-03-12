@@ -46,4 +46,9 @@ public class GlobalException {
     public ResponseEntity<Map<String,String>> handleException(PaymentNotFoundException ex){
         return ResponseEntity.badRequest().body(Map.of("message", "Payment not found!"));
     }
+
+    @ExceptionHandler(CompanyNotFoundException.class)
+    public ResponseEntity<Map<String,String>> handleException(CompanyNotFoundException ex){
+        return ResponseEntity.badRequest().body(Map.of("message", "Company not found!"));
+    }
 }
