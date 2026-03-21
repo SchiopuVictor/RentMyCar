@@ -19,10 +19,10 @@ import java.time.LocalDateTime;
 @Service
 @RequiredArgsConstructor
 public class BookingService {
+
     private final BookingRepository bookingRepository;
     private final CarRepository carRepository;
     private final CustomerRepository customerRepository;
-
 
     @Transactional
     public Booking createBooking(BookingRequest request) {

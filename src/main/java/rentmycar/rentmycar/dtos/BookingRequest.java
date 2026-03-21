@@ -19,9 +19,4 @@ public class BookingRequest {
     private String status;
     private LocalDateTime createdAt;
 
-    /* sa vad de ce imi pare null la invoice la amount sa rezolv problema
-    * sa incep sa lucrez la generarea pdf-ului
-    * sa revizuiesc logica din spatele tuturor entitatilor si claselor care sunt sa vad daca sunt totate corect!!
-    *
-    */
 }

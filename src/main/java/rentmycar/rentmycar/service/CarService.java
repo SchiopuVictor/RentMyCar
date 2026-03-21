@@ -9,7 +9,7 @@ import rentmycar.rentmycar.exception.CarNotFoundException;
 import rentmycar.rentmycar.mapper.CarMapper;
 import rentmycar.rentmycar.repository.CarRepository;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -19,13 +19,13 @@ public class CarService {
     @Transactional
     public Car createCar(CarRequest request) {
         Car car = CarMapper.toEntity(request);
-        car.setCreatedAt(new Date());
+        car.setCreatedAt(LocalDateTime.now());
         return carRepository.save(car);
 
     }
 
     @Transactional
-    public Car updateCar(CarRequest request,Long id) {
+    public Car updateCar(CarRequest request, Long id) {
         Car car = carRepository.findById(id).orElseThrow(
                 CarNotFoundException::new);
         car.setBrand(request.getBrand());
@@ -44,8 +44,8 @@ public class CarService {
 
     @Transactional
     public void deleteCar(Long id) {
-       Car car = carRepository.findById(id).orElseThrow(
-               CarNotFoundException::new);
+        Car car = carRepository.findById(id).orElseThrow(
+                CarNotFoundException::new);
         carRepository.delete(car);
     }
 
