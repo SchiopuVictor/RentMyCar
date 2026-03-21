@@ -3,7 +3,7 @@ package rentmycar.rentmycar.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -36,7 +36,7 @@ public class Customer {
     private String driverLicenseNumber;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @OneToMany
     @JoinColumn(name = "customer_id")

@@ -6,8 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.Instant;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -21,7 +20,7 @@ public class CarRequest {
     private String licensePlate;
     private BigDecimal pricePerDay;
     private String status;
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
 
 }
